@@ -45,10 +45,6 @@ body {
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
-/* 
-  VIOLET THEME - LIGHT MODE
-  We have replaced the old oklch values with the official Shadcn Violet HSL values.
-*/
 :root {
   --radius: 0.5rem;
   --background: 296.8 90.2% 16.1%;
@@ -88,10 +84,6 @@ body {
   --sidebar-ring: 262.1 83.3% 57.8%; /* Ring */
 }
 
-/* 
-  VIOLET THEME - DARK MODE
-  We have replaced the old oklch values with the official Shadcn Violet HSL values.
-*/
 .dark {
   --background: 255 240 255;
   --foreground: 0 0% 98%;
@@ -130,19 +122,57 @@ body {
   --sidebar-ring: 262.1 83.3% 57.8%; /* Ring */
 }
 
-/* 
-  This block applies the base styles and should remain at the bottom.
-  Note: If you have issues, you might need to change the @import statements at the top
-  to the more standard Tailwind directives:
-  @tailwind base;
-  @tailwind components;
-  @tailwind utilities;
-*/
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
   body {
     background-color: #11071f;
+  }
+}
+
+@layer utilities {
+  @keyframes blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+
+  .animate-blink {
+    animation: blink 1s infinite;
+  }
+  @keyframes wave {
+    0% {
+      transform: rotate(0deg);
+    }
+    10% {
+      transform: rotate(14deg);
+    }
+    20% {
+      transform: rotate(-8deg);
+    }
+    30% {
+      transform: rotate(14deg);
+    }
+    40% {
+      transform: rotate(-4deg);
+    }
+    50% {
+      transform: rotate(10deg);
+    }
+    60% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  .animate-wave {
+    animation: wave 2s ease-in-out;
   }
 }

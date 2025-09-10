@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Preahvihear } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./Components/theme-provider";
+import Navbar from "./Components/Navbar";
+import { ScrollToTopButton } from "./Components/ScrollToTopButton";
 
 const preahvihear = Preahvihear({
   subsets: ["latin"],
@@ -27,7 +29,9 @@ export default function RootLayout({
           defaultTheme="dark"
           disableTransitionOnChange
         >
+          <Navbar />
           {children}
+          <ScrollToTopButton />
         </ThemeProvider>
       </body>
     </html>
