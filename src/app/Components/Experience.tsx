@@ -4,26 +4,26 @@ import Image from "next/image";
 const experiences = [
   {
     id: 1,
-    title: "Front-End Development Intern",
+    title: "Full-Stack Developer Intern",
     company: "DunDill",
-    location: "Sousse, Tunisia",
     imgSrc: "/dundill_logo.webp",
-    date: "June 2023 – September 2023",
+    location: "Sousse, Tunisia",
+    date: "July 2024 – August 2024",
     description: [
-      "Achievement: Developed the entire front end of the company's official website, leading to increased client acquisition and positive feedback on performance and efficiency.",
-      "Action: Learned various technologies, including the MERN stack and GraphQL, with a primary focus on mastering Next.js to build a responsive and efficient website.",
-      "Result: Enhanced the company's online presence and user engagement.",
+      "Achievement: Delivered a full-stack e-commerce application for a clothing store.",
+      "Action: Worked on backend architecture and implemented robust security measures using NestJS while designing a rich and user-friendly admin dashboard with Next.js.",
+      "Result: Streamlined business operations and improved product management efficiency.",
     ],
     skills: [
-      "React.js",
+      "Full-Stack",
+      "NestJS",
       "Next.js",
-      "MERN Stack",
-      "GraphQL",
-      "Express.js",
-      "TailwindCSS",
-      "MaterialUI",
+      "E-commerce",
+      "Security",
+      "RestAPI",
     ],
   },
+
   {
     id: 2,
     title: "Freelance Web Developer",
@@ -49,23 +49,24 @@ const experiences = [
   },
   {
     id: 3,
-    title: "Full-Stack Developer Intern",
+    title: "Front-End Development Intern",
     company: "DunDill",
-    imgSrc: "/dundill_logo.webp",
     location: "Sousse, Tunisia",
-    date: "July 2024 – August 2024",
+    imgSrc: "/dundill_logo.webp",
+    date: "June 2023 – September 2023",
     description: [
-      "Achievement: Delivered a full-stack e-commerce application for a clothing store.",
-      "Action: Worked on backend architecture and implemented robust security measures using NestJS while designing a rich and user-friendly admin dashboard with Next.js.",
-      "Result: Streamlined business operations and improved product management efficiency.",
+      "Achievement: Developed the entire front end of the company's official website, leading to increased client acquisition and positive feedback on performance and efficiency.",
+      "Action: Learned various technologies, including the MERN stack and GraphQL, with a primary focus on mastering Next.js to build a responsive and efficient website.",
+      "Result: Enhanced the company's online presence and user engagement.",
     ],
     skills: [
-      "Full-Stack",
-      "NestJS",
+      "React.js",
       "Next.js",
-      "E-commerce",
-      "Security",
-      "RestAPI",
+      "MERN Stack",
+      "GraphQL",
+      "Express.js",
+      "TailwindCSS",
+      "MaterialUI",
     ],
   },
 ];
@@ -87,9 +88,15 @@ function Experience() {
                 <img
                   src={exp.imgSrc}
                   alt=""
-                  className={clsx("w-16 h-16 rounded-full object-cover ", {
-                    "bg-white p-2": exp.id !== 2,
-                  })}
+                  className={clsx(
+                    "w-16 h-16  ",
+                    {
+                      "bg-white p-2 rounded-full": exp.id !== 2,
+                    },
+                    {
+                      "bg-[#11071f] object-contain": exp.id === 2,
+                    }
+                  )}
                 />
                 <div className="flex flex-col">
                   <h3 className="text-xl font-bold text-white">{exp.title}</h3>

@@ -12,8 +12,11 @@ const preahvihear = Preahvihear({
 });
 
 export const metadata: Metadata = {
-  title: "My Awesome Portfolio",
+  title: "Abdennour Boukhris",
   description: "A personal portfolio built with Next.js and Tailwind CSS.",
+  icons: {
+    icon: "/icon.png",
+  },
 };
 
 export default function RootLayout({

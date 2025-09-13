@@ -37,9 +37,9 @@ function Navbar() {
 
   const navItems = [
     { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
+    { href: "/about", label: "About Me" },
     { href: "/projects", label: "Projects" },
-    { href: "/contact", label: "Contact" },
+    { href: "/contact", label: "Contact Me" },
   ];
 
   return (
@@ -59,7 +59,7 @@ function Navbar() {
           }
         )}
       >
-        <Link href="/" className="flex items-center justify-center">
+        <Link href="/" className="flex items-center justify-center gap-2">
           <Image src="/ll.webp" alt="logo image" height={60} width={60} />
           <div className="flex-col items-center justify-center mt-1 flex">
             <h1 className="font-extrabold sm:text-lg text-[#cfa6eb]">
