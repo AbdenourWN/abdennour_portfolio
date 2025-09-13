@@ -1,9 +1,10 @@
 "use client";
 
 import React from "react";
-
+import { motion } from "framer-motion"; // 1. Import motion
 import { FollowerPointerCard } from "@/components/ui/following-pointer";
 import ProjectCard from "@/components/ui/ProjectCard";
+import clsx from "clsx";
 
 const projectsData = [
   {
@@ -37,6 +38,7 @@ const projectsData = [
       "A full-stack e-commerce platform with a rich admin dashboard, built with Next.js and NestJS for robust performance and security.",
     imageUrl: "/e-commerce.webp",
     link: "projects/4",
+
   },
   {
     id: 5,
@@ -61,24 +63,63 @@ const TitleComponent = () => (
   </div>
 );
 
+// 2. Define animation variants for the container and the items
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2, // Each card will appear 0.2s after the previous one
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
+
 function Projects() {
   return (
     <div className="container mx-auto py-16 px-4 h-full">
       <h1 className="text-4xl font-bold text-[#5b0097] mb-12 md:text-start text-center">
         Projects
       </h1>
-      <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-auto">
+      {/* 3. Wrap the grid in a motion.div to act as the animation container */}
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        className="relative grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-8 mx-auto"
+      >
         {projectsData.map((project, index) => (
-          <FollowerPointerCard key={index} title={<TitleComponent />}>
-            <ProjectCard
-              title={project.title}
-              description={project.description}
-              imageUrl={project.imageUrl}
-              link={project.link}
-            />
-          </FollowerPointerCard>
+          // 4. Wrap each project card in a motion.div to be the animated item
+          <motion.div
+            key={project.id} // Use a stable key like project.id
+            variants={itemVariants}
+            className={clsx("md:col-span-2 h-full", {
+              "lg:col-start-2": index === 3,
+            }, {
+              "md:col-start-2 lg:col-start-4": index === 4,
+            })}
+          >
+            <FollowerPointerCard className="h-full max-h-[600px]" title={<TitleComponent />}>
+              <ProjectCard
+                title={project.title}
+                description={project.description}
+                imageUrl={project.imageUrl}
+                link={project.link}
+              />
+            </FollowerPointerCard>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 }

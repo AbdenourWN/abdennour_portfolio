@@ -1,5 +1,7 @@
+"use client";
 import clsx from "clsx";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const experiences = [
   {
@@ -73,15 +75,40 @@ const experiences = [
 
 const words = ["Achievement:", "Action:", "Result:"];
 
+// 2. A container variant for staggering the skills
+const skillsContainer = {
+  animate: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+// 3. A variant for each individual skill tag
+const skillItem = {
+  initial: { opacity: 0, y: -20 },
+  animate: { opacity: 1, y: 0 },
+};
+
 function Experience() {
   return (
     <div className="container mx-auto py-20 px-4 h-full">
       <h1 className="text-4xl font-bold text-[#5b0097] mb-12 md:text-start text-center">
         Experiences & Interships
       </h1>
-      <div className="flex flex-col h-full gap-12">
+      <motion.div
+        className="flex flex-col h-full gap-12"
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true, amount: 0.5 }}
+        variants={skillsContainer}
+      >
         {experiences.map((exp) => (
-          <div key={exp.id} className="flex h-full sm:gap-12 gap-5">
+          <motion.div
+            variants={skillItem}
+            key={exp.id}
+            className="flex h-full sm:gap-12 gap-5"
+          >
             <div className="w-0.5 bg-zinc-700 rounded-full" />
             <div className="flex flex-col">
               <div className="flex gap-5">
@@ -139,9 +166,9 @@ function Experience() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 }

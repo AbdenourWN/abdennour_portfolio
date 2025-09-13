@@ -1,11 +1,20 @@
+"use client"
 import Image from "next/image";
+import { motion } from "framer-motion";
 
-// 1. Data structure for skills, categorized and with color mapping
 const skillsData = [
   {
     category: "Languages",
     color: "blue",
-    skills: ["JavaScript", "TypeScript", "Python", "C/C++", "Java", "PHP","Solidity"],
+    skills: [
+      "JavaScript",
+      "TypeScript",
+      "Python",
+      "C/C++",
+      "Java",
+      "PHP",
+      "Solidity",
+    ],
   },
   {
     category: "Frameworks",
@@ -26,7 +35,13 @@ const skillsData = [
   {
     category: "Backend",
     color: "purple",
-    skills: ["Node.js", "REST APIs", "Microservices","Smart Contracts","GraphQL"],
+    skills: [
+      "Node.js",
+      "REST APIs",
+      "Microservices",
+      "Smart Contracts",
+      "GraphQL",
+    ],
   },
   {
     category: "Databases",
@@ -48,6 +63,26 @@ const colorClassMap = {
   yellow: "bg-yellow-950 text-yellow-300 border border-yellow-700",
 };
 
+const fadeIn = {
+  initial: { opacity: 0 },
+  animate: { opacity: 1, transition: { duration: 1, delay: 0.2 } },
+};
+
+// 2. A container variant for staggering the skills
+const skillsContainer = {
+  animate: {
+    transition: {
+      staggerChildren: 0.1, 
+    },
+  },
+};
+
+// 3. A variant for each individual skill tag
+const skillItem = {
+  initial: { opacity: 0, x: -20 },
+  animate: { opacity: 1, x: 0 },
+};
+
 function AboutMe() {
   return (
     <div className="relative py-24 px-3 container mx-auto flex max-md:flex-col items-start justify-center gap-10 w-full">
@@ -60,15 +95,31 @@ function AboutMe() {
         draggable={false}
       />
       <div className="flex flex-col justify-center items-center gap-12">
-        <Image
-          src="/me.webp"
-          alt="logo image"
-          height={400}
-          width={300}
-          className="select-none rounded-full aspect-square object-cover border-[12px] border-[#5b0097] drop-shadow-[#5b0097] drop-shadow-2xl"
-          draggable={false}
-        />
-        <div className="flex flex-col gap-6 text-center z-10 max-w-5xl">
+        <motion.div
+          animate={{ translateY: ["-3%", "3%"] }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            repeatType: "mirror",
+            ease: "easeInOut",
+          }}
+        >
+          <Image
+            src="/me.webp"
+            alt="logo image"
+            height={400}
+            width={300}
+            className="select-none rounded-full aspect-square object-cover border-[12px] border-[#5b0097] drop-shadow-[#5b0097] drop-shadow-2xl"
+            draggable={false}
+          />
+        </motion.div>
+        <motion.div
+          className="flex flex-col gap-6 text-center z-10 max-w-5xl"
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: false }}
+          variants={fadeIn}
+        >
           <h1 className="text-4xl font-bold text-[#5b0097]">About Me</h1>
           <p className="z-10 lg:text-base text-sm">
             As a full-stack developer, I build high-quality, user-centric web
@@ -80,7 +131,7 @@ function AboutMe() {
             the keyboard, I'm recharging in nature or giving back to the
             open-source projects that power our industry.
           </p>
-        </div>
+        </motion.div>
       </div>
       <div className="flex flex-col gap-6 md:text-start text-center z-10">
         <h1 className="text-4xl font-bold text-[#5b0097]">Skills</h1>
@@ -90,10 +141,17 @@ function AboutMe() {
               <h2 className="text-2xl font-bold text-white">
                 {categoryItem.category}
               </h2>
-              <div className="flex flex-wrap gap-2 max-md:justify-center">
+              <motion.div
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: false, amount: 0.2 }}
+                variants={skillsContainer}
+                className="flex flex-wrap gap-2 max-md:justify-center"
+              >
                 {categoryItem.skills.map((skill) => (
-                  <span
+                  <motion.span
                     key={skill}
+                    variants={skillItem}
                     className={`rounded-full px-4 py-1 text-sm font-medium ${
                       colorClassMap[
                         categoryItem.color as keyof typeof colorClassMap
@@ -101,9 +159,9 @@ function AboutMe() {
                     }`}
                   >
                     {skill}
-                  </span>
+                  </motion.span>
                 ))}
-              </div>
+              </motion.div>
             </div>
           ))}
         </div>

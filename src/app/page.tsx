@@ -3,6 +3,7 @@ import AboutMe from "./Components/aboutMe";
 import Hero from "./Components/hero";
 import Experience from "./Components/Experience";
 import Projects from "./Components/Projects";
+import ContactForm from "./Components/ContactForm";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <AboutMe />
       <Experience />
       <Projects />
+      <ContactForm />
     </div>
   );
 }

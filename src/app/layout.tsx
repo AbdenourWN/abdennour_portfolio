@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "./Components/theme-provider";
 import Navbar from "./Components/Navbar";
 import { ScrollToTopButton } from "./Components/ScrollToTopButton";
+import Footer from "./Components/Footer";
 
 const preahvihear = Preahvihear({
   subsets: ["latin"],
@@ -34,6 +35,7 @@ export default function RootLayout({
         >
           <Navbar />
           {children}
+          <Footer />
           <ScrollToTopButton />
         </ThemeProvider>
       </body>

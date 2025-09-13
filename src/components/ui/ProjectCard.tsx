@@ -15,7 +15,7 @@ export default function ProjectCard({
   link,
 }: ProjectCardProps) {
   return (
-    <div className="group relative h-full overflow-hidden  rounded-xl transition duration-300 bg-zinc-800 border border-zinc-800 border-opacity-50 shadow-2xl shadow-purple-950 scale-95 hover:scale-105 ">
+    <div className="group relative h-full max-h-[600px] overflow-hidden  rounded-xl transition duration-300 bg-zinc-800 border border-zinc-800 border-opacity-50 shadow-2xl shadow-purple-950 scale-95 hover:scale-105 ">
       <img src={imageUrl} alt={title} className="w-full h-52 object-cover" />
       <div className="p-6 flex flex-col h-full">
         <h2 className="text-xl font-semibold mb-2 text-white">{title}</h2>
