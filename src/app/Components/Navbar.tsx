@@ -62,10 +62,10 @@ function Navbar() {
         <Link href="/" className="flex items-center justify-center">
           <Image src="/ll.webp" alt="logo image" height={60} width={60} />
           <div className="flex-col items-center justify-center mt-1 flex">
-            <h1 className="font-extrabold text-lg text-[#cfa6eb]">
+            <h1 className="font-extrabold sm:text-lg text-[#cfa6eb]">
               Abdennour Boukhris
             </h1>
-            <h2 className="font-bold text-sm text-white">Portfolio</h2>
+            <h2 className="font-bold sm:text-sm text-xs text-white">Portfolio</h2>
           </div>
         </Link>
 
@@ -76,7 +76,7 @@ function Navbar() {
               <Link
                 href={item.href}
                 className={clsx("transition-colors duration-300", {
-                  "text-[#cfa6eb] font-bold": pathname === item.href,
+                  "text-[#cfa6eb] font-bold": ( item.href !== "/" &&  pathname.includes(item.href) ) || pathname === item.href,
                   "hover:text-[#cfa6eb]/80": pathname !== item.href,
                 })}
               >

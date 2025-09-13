@@ -32,16 +32,17 @@ type GLTFResult = {
 interface ModelProps {
   open: boolean;
   hinge: any;
+  imgSrc: string;
 }
 
-function Model({ open, hinge, ...props }: ModelProps) {
+function Model({ open, hinge, imgSrc, ...props }: ModelProps) {
   const group = useRef<THREE.Group>(null!);
   const { nodes, materials } = useGLTF(
     "/mac-draco.glb"
   ) as unknown as GLTFResult;
 
   // 1. Load the texture
-  const texture = useLoader(THREE.TextureLoader, "/Minato.png"); // <-- Path to your image in the public folder
+  const texture = useLoader(THREE.TextureLoader, imgSrc); // <-- Path to your image in the public folder
 
   // This is a crucial step for GLTF models.
   // By default, Three.js flips textures, but GLTF models expect them unflipped.
@@ -131,7 +132,7 @@ function Model({ open, hinge, ...props }: ModelProps) {
   );
 }
 
-export default function FloatingLaptop() {
+export default function FloatingLaptop({ imgSrc }: { imgSrc: string }) {
   // This flag controls open state, alternates between true & false
   const [open, setOpen] = useState(false);
   // We turn this into a spring animation that interpolates between 0 and 1
@@ -139,12 +140,15 @@ export default function FloatingLaptop() {
   return (
     <web.main
       style={{
-        background: props.open.to([0, 1], ["#11071f", "#11071f"]),
+        background: "#11071f",
       }}
-      className={clsx("flex flex-col items-center justify-center transition-all duration-700 w-full min-[590px]:h-[80vh] min-[415px]:h-[60vh] h-[50vh] max-[415px]:mt-10",
-        {" min-[590px]:-translate-y-64 min-[415px]:-translate-y-32 -translate-y-10" : !open},
-        { "translate-y-0" : open}
-
+      className={clsx(
+        "flex flex-col items-center justify-center transition-all duration-700 w-full min-[590px]:h-[80vh] min-[415px]:h-[60vh] h-[50vh] max-[415px]:mt-10",
+        {
+          " min-[590px]:-translate-y-64 min-[415px]:-translate-y-32 -translate-y-10":
+            !open,
+        },
+        { "translate-y-0": open }
       )}
     >
       <web.h1
@@ -154,7 +158,9 @@ export default function FloatingLaptop() {
             (o) => `translate3d(0%,${o * 50 + 500}px,0)`
           ),
         }}
-        className={"mx-auto text-center text-white min-[590px]:text-7xl text-4xl max-[590px]:-translate-y-32 max-[415px]:-translate-y-52 min-[415px]:text-5xl font-bold"}
+        className={
+          "mx-auto text-center text-white min-[590px]:text-7xl text-4xl max-[590px]:-translate-y-32 max-[415px]:-translate-y-52 min-[415px]:text-5xl font-bold"
+        }
       >
         click
       </web.h1>
@@ -169,7 +175,11 @@ export default function FloatingLaptop() {
             rotation={[0, Math.PI, 0]}
             onClick={(e) => (e.stopPropagation(), setOpen(!open))}
           >
-            <Model open={open} hinge={props.open.to([0, 1], [1.575, -0.425])} />
+            <Model
+              open={open}
+              hinge={props.open.to([0, 1], [1.575, -0.425])}
+              imgSrc={imgSrc}
+            />
           </group>
           <Environment preset="city" />
         </Suspense>
