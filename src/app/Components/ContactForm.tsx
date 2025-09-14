@@ -102,7 +102,7 @@ function ContactForm() {
             <input
               type="text"
               id="name"
-              name="user_name" // Corrected from "name" to "user_name" for consistency
+              name="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Your name"

@@ -177,7 +177,7 @@ function Contact() {
                 Name
               </label>
               <input
-                type="text" id="name" name="user_name"
+                type="text" id="name" name="name"
                 value={name} onChange={(e) => setName(e.target.value)}
                 placeholder="Your Name" required disabled={isSubmitting}
                 className="w-full p-3 rounded-lg bg-[#2c1b47] text-zinc-200 placeholder:text-zinc-500 border border-transparent focus:border-violet-500 focus:ring-1 focus:ring-violet-500 transition-colors duration-200 outline-none"
