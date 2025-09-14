@@ -127,7 +127,7 @@ export default function ProjectPage() {
           </div>
           <div>
             <h2 className="text-2xl font-bold mb-4">Key Features</h2>
-            <ul className="space-y-3">
+            <ul className="space-y-3 flex flex-col items-center sm:items-start">
               {project.features.map((feature, index) => (
                 <li key={index} className="flex items-center gap-3">
                   <CircleCheck className="h-5 w-5 text-blue-500 flex-shrink-0" />
@@ -141,7 +141,7 @@ export default function ProjectPage() {
         <div className="space-y-8">
           <div>
             <h2 className="text-2xl font-bold mb-4">Technologies Used</h2>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
               {project.technologies.map((tech) => (
                 <span
                   key={tech}
