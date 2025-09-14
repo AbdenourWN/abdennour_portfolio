@@ -85,7 +85,7 @@ const itemVariants = {
   },
 };
 
-function Projects() {
+function Projects({props}:any) {
   return (
     <div className="container mx-auto py-16 px-4 h-full">
       <h1 className="text-4xl font-bold text-[#5b0097] mb-12 md:text-start text-center">
@@ -95,7 +95,7 @@ function Projects() {
       <motion.div
         variants={containerVariants}
         initial="hidden"
-        whileInView="visible"
+        {...props}
         className="relative grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-8 mx-auto"
       >
         {projectsData.map((project, index) => (

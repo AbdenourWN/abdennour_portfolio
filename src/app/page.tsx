@@ -11,7 +11,7 @@ export default function Home() {
       <Hero />
       <AboutMe />
       <Experience />
-      <Projects />
+      <Projects props={{ whileInView: "visible" }} />
       <ContactForm />
     </div>
   );
