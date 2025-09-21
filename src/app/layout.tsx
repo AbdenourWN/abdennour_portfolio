@@ -5,6 +5,7 @@ import { ThemeProvider } from "./Components/theme-provider";
 import Navbar from "./Components/Navbar";
 import { ScrollToTopButton } from "./Components/ScrollToTopButton";
 import Footer from "./Components/Footer";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const preahvihear = Preahvihear({
   subsets: ["latin"],
@@ -35,6 +36,7 @@ export default function RootLayout({
         >
           <Navbar />
           {children}
+          <SpeedInsights />
           <Footer />
           <ScrollToTopButton />
         </ThemeProvider>
