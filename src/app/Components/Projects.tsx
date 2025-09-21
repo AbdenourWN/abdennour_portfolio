@@ -97,6 +97,7 @@ function Projects({props}:any) {
         initial="hidden"
         {...props}
         className="relative grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-8 mx-auto"
+        viewport={{ once: true }}
       >
         {projectsData.map((project, index) => (
           // 4. Wrap each project card in a motion.div to be the animated item
@@ -108,6 +109,7 @@ function Projects({props}:any) {
             }, {
               "md:col-start-2 lg:col-start-4": index === 4,
             })}
+            viewport={{ once: true }}
           >
             <FollowerPointerCard className="h-full max-h-[600px]" title={<TitleComponent />}>
               <ProjectCard

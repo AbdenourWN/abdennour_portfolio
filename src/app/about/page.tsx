@@ -156,7 +156,7 @@ function About() {
                 <p className="text-lg text-purple-400 font-semibold">
                   {personalInfo.title}
                 </p>
-                <p className=" flex items-center gap-2 text-md text-zinc-400 mt-1">
+                <p className=" flex items-center gap-2 text-md text-zinc-400 mt-1 sm:justify-start justify-center">
                   <FaLocationDot />
                   {personalInfo.location}
                 </p>

@@ -100,7 +100,7 @@ function Experience() {
         className="flex flex-col h-full gap-12"
         initial="initial"
         whileInView="animate"
-        viewport={{ once: true, amount: 0.5 }}
+        viewport={{ once: true, amount: 0.2 }}
         variants={skillsContainer}
       >
         {experiences.map((exp) => (

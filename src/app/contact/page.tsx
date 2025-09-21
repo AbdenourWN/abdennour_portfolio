@@ -119,7 +119,7 @@ function Contact() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="flex flex-col gap-8"
+          className="flex flex-col gap-8 text-center md:text-start"
         >
           <motion.h1
             variants={itemVariants}
@@ -132,9 +132,9 @@ function Contact() {
             opportunities to be part of your visions. Feel free to reach out to
             me.
           </motion.p>
-          <motion.div variants={itemVariants} className="space-y-6">
+          <motion.div variants={itemVariants} className="space-y-6 md:mx-0 mx-auto">
             {contactDetails.map((item, index) => (
-              <div key={index} className="flex items-center gap-4">
+              <div key={index} className="flex items-center md:gap-4 flex-col md:flex-row gap-2">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
                   {item.icon}
                 </div>
@@ -147,7 +147,7 @@ function Contact() {
           </motion.div>
           <motion.div
             variants={itemVariants}
-            className="flex items-center gap-4 mt-4"
+            className="flex items-center gap-4 mt-4 mx-auto md:mx-0"
           >
             {socialLinks.map((social) => (
               <a
